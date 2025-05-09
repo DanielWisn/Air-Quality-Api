@@ -1,0 +1,10 @@
+API
+
+Klient(CLI) ściągnać dane od api zparsować i wysłać do aplikacji serwerowej
+
+SERWER(FLASK) musi wystawiać endpoint 2 endpoint jeden postowy dane od klienta i wysyła i get który dostaje od api
+
+ENDPOINT
+
+Get
+Post pobiera dane od klienta i zapisuje je
