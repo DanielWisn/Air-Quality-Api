@@ -7,12 +7,18 @@ from http import HTTPStatus
 
 app = Flask(__name__)
 
-@app.get("/get")
-def get_users() -> ResponseReturnValue:
-    return "get", HTTPStatus.OK
+@app.get("/get/<string:date>")
+def GetWeatherForecast(date:str) -> ResponseReturnValue:
+    repository = WeatherRepository()
+    controller = WeatherController(repository=repository)
+    data = controller.GetWeatherForecast(date=date)
+    if data == ValueError:
+        return jsonify(),HTTPStatus.BAD_REQUEST
+    else:
+        return jsonify(data), HTTPStatus.OK
 
 @app.post("/post")
-def post_user() -> ResponseReturnValue:
+def PostWeatherForecast() -> ResponseReturnValue:
     repository = WeatherRepository()
     controller = WeatherController(repository=repository)
     response_json = request.json
