@@ -11,12 +11,12 @@ if args.lat != None and args.lon != None:
 else:
     coordinates = (52.237049,21.017532)
 
-url = "https://air-quality-api.open-meteo.com/v1/air-quality"
+url = "https://api.open-meteo.com/v1/forecast"
 
 params = {
 	"latitude": coordinates[0],
 	"longitude": coordinates[1],
-	"hourly": ["pm10", "pm2_5", "carbon_monoxide"],
+	"hourly": ["temperature_2m", "wind_speed_10m", "relative_humidity_2m"],
 	"timezone": "auto",
 	"forecast_days": 1
 }
@@ -28,5 +28,6 @@ post_json = {
 	"longitude": response_json["longitude"],
 	"hourly": response_json["hourly"],
 }
-    
-requests.post(url="http://127.0.0.1:5000/post",json=response_json)
+
+print(post_json)
+requests.post(url="http://127.0.0.1:5000/post",json=post_json)
