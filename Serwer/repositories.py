@@ -23,6 +23,12 @@ class WeatherRepository:
     def PostWeatherForecast(WeatherForecast:WeatherReading) -> None:
         with open('./data.json','r') as f:
             data = json.load(f)
+        new_times = WeatherForecast.hourly.time
+
+        for entry in data:
+            if entry["hourly"]["time"] == new_times:
+                return ValueError
+            
         data.append(WeatherForecast.model_dump())
         with open('./data.json','w') as f:
             json.dump(data,f)

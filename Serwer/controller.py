@@ -18,5 +18,6 @@ class WeatherController:
             Data = WeatherReading(**WeatherData)
         except ValueError:
             return ValueError
+        if self._repository.PostWeatherForecast(Data) == ValueError:
+            return ValueError
         
-        self._repository.PostWeatherForecast(Data)
