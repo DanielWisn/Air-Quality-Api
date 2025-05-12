@@ -29,4 +29,4 @@ post_json = {
 	"hourly": response_json["hourly"],
 }
 
-requests.post(url="http://127.0.0.1:5000/post",json=post_json)
+requests.post(url="http://127.0.0.1:5000/post/",json=post_json)
