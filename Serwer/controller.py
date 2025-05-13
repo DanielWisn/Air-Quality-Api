@@ -6,7 +6,7 @@ class WeatherController:
     def __init__(self, repository : WeatherRepository) -> None:
         self._repository = repository
 
-    def GetWeatherForecast(self,date:str) -> list:
+    def GetWeatherForecast(self,date:str) -> dict:
         try:
             datetime.strptime(date, "%Y-%m-%dT%H:%M")
         except ValueError:
@@ -20,4 +20,4 @@ class WeatherController:
             return ValueError
         if self._repository.PostWeatherForecast(Data) == ValueError:
             return ValueError
-        
+

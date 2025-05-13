@@ -3,7 +3,7 @@ from models import WeatherReading
 
 class WeatherRepository:
     @staticmethod
-    def GetWeatherForecast(date:str) -> list:
+    def GetWeatherForecast(date:str) -> dict:
         with open('./data.json','r') as f:
             data = json.load(f)
 
