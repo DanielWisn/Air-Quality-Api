@@ -9,7 +9,7 @@ from http import HTTPStatus
 app = Flask(__name__)
 
 class WeatherAPI(MethodView):
-    def __init__(self):
+    def __init__(self) -> None:
         self.repository = WeatherRepository()
         self.controller = WeatherController(self.repository)
     
